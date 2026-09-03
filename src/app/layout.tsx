@@ -26,10 +26,7 @@ const latin = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: {
-    default: `${site.name} | ${site.tagline}`,
-    template: `%s | مكتب إنجاز العين`,
-  },
+  title: site.name,
   description: site.description,
   applicationName: site.name,
   authors: [{ name: site.name, url: site.url }],

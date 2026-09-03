@@ -83,7 +83,7 @@ export default function HomePage() {
               العين — المويجعي، شارع خليفة بن زايد
             </p>
             <h1 className="text-[clamp(1.95rem,4.4vw,2.9rem)] font-bold leading-[1.3] text-white">
-              مكتب إنجاز العين لتخليص المعاملات القانونية والعائلية
+              {site.name}
             </h1>
             <p className="mt-5 max-w-2xl text-[1.08rem] leading-[1.9] text-white/75">
               عقود الزواج وحجز المأذون الشرعي، الوكالات وكاتب العدل، الإقرارات وحصر الإرث،

@@ -76,7 +76,7 @@ export function Mdx({ source }: { source: string }) {
     <MDXRemote
       source={source}
       components={components}
-      options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+      options={{ blockJS: false, mdxOptions: { remarkPlugins: [remarkGfm] } }}
     />
   );
 }

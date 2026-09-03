@@ -1,0 +1,32 @@
+{
+  "_comment": "الخريطة الكاملة للخدمات الـ24 المستخرجة من قائمة خدمات المكتب (25 بنداً، البندان 13 و24 مدمجان في appeal-judgment). يستخدمها المدقّق للتمييز بين رابط مكسور فعلاً ورابط لصفحة لم تُكتب بعد.",
+  "services": {
+    "marriage-contract-application":  { "category": "marriage",    "pdfItems": [1],     "order": 1 },
+    "book-mazoun":                    { "category": "marriage",    "pdfItems": [2],     "order": 2 },
+    "marriage-fund-grant-housing":    { "category": "marriage",    "pdfItems": [3],     "order": 3 },
+
+    "power-of-attorney":              { "category": "notary",      "pdfItems": [4],     "order": 4 },
+    "revoke-power-of-attorney":       { "category": "notary",      "pdfItems": [5],     "order": 5 },
+    "dependency-custody-declaration": { "category": "notary",      "pdfItems": [6],     "order": 6 },
+    "residence-declaration":          { "category": "notary",      "pdfItems": [7],     "order": 7 },
+    "divorce-status-declaration":     { "category": "notary",      "pdfItems": [8],     "order": 8 },
+    "divorce-attestation":            { "category": "notary",      "pdfItems": [9],     "order": 9 },
+    "inheritance-limitation":         { "category": "notary",      "pdfItems": [10],    "order": 10 },
+
+    "file-complaint":                 { "category": "prosecution", "pdfItems": [11],    "order": 11 },
+    "prosecution-requests":           { "category": "prosecution", "pdfItems": [12],    "order": 12 },
+    "objection-to-judgment":          { "category": "prosecution", "pdfItems": [14],    "order": 14 },
+    "pay-fines-lift-search":          { "category": "prosecution", "pdfItems": [15],    "order": 15 },
+    "bail-request":                   { "category": "prosecution", "pdfItems": [16],    "order": 16 },
+    "release-impounded-vehicle":      { "category": "prosecution", "pdfItems": [17],    "order": 17 },
+    "fine-installment":               { "category": "prosecution", "pdfItems": [18],    "order": 18 },
+    "retrieve-seized-items":          { "category": "prosecution", "pdfItems": [19],    "order": 19 },
+
+    "open-case-file":                 { "category": "courts",      "pdfItems": [20],    "order": 20 },
+    "family-guidance-file":           { "category": "courts",      "pdfItems": [21],    "order": 21 },
+    "judgment-execution":             { "category": "courts",      "pdfItems": [22],    "order": 22 },
+    "divorce-khula-personal-status":  { "category": "courts",      "pdfItems": [23],    "order": 23 },
+    "appeal-judgment":                { "category": "courts",      "pdfItems": [13, 24], "order": 24 },
+    "payment-refund-requests":        { "category": "courts",      "pdfItems": [25],    "order": 25 }
+  }
+}

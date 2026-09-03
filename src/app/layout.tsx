@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
     default: `${site.name} | ${site.tagline}`,
-    template: `%s | ${site.name}`,
+    template: `%s | مكتب إنجاز العين`,
   },
   description: site.description,
   applicationName: site.name,

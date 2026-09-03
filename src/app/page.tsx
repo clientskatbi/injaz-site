@@ -12,7 +12,7 @@ import { CtaCard } from "@/components/CtaCard";
 import { ClockIcon, PinIcon, CheckIcon, ArrowIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
-  title: `${site.name} | تخليص معاملات المحاكم والنيابة والوكالات`,
+  title: `${site.name}`,
   description: site.description,
   alternates: { canonical: "/" },
 };

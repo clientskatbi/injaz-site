@@ -13,7 +13,7 @@ import { Disclaimer } from "@/components/Disclaimer";
 import { CheckIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
-  title: "من نحن — مكتب خدمات خاص في العين",
+  title: "من نحن — مكتب إنجاز العين للمعاملات القانونية",
   description:
     "مكتب إنجاز العين: مكتب خدمات خاص لتخليص المعاملات في العين. تعرّف على ما نفعله وما لا نفعله، والجهات التي نتعامل معها، وحدود دورنا مقارنةً بالمحامي.",
   alternates: { canonical: "/about/" },

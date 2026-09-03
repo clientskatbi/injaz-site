@@ -10,7 +10,7 @@ import { ServiceCard } from "@/components/Cards";
 import { ArrowIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
-  title: "أدلّة ومقالات المعاملات في العين",
+  title: "أدلّة ومقالات إنجاز المعاملات في العين",
   description:
     "أدلّة عملية تشرح إجراءات المعاملات في العين: المستندات المطلوبة، الخطوات، المدة المتوقّعة والأخطاء الشائعة — لكل خدمة من خدمات مكتب إنجاز العين.",
   alternates: { canonical: "/articles/" },

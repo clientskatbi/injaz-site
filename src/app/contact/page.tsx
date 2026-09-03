@@ -8,7 +8,7 @@ import { CallButton, WhatsAppButton, GhostButton } from "@/components/Buttons";
 import { PhoneIcon, PinIcon, ClockIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
-  title: "تواصل معنا وموقع المكتب في العين",
+  title: "تواصل مع مكتب إنجاز العين في المويجعي",
   description:
     "مكتب إنجاز العين — شارع خليفة بن زايد، مبنى بن حم، المويجعي، العين. يومياً 7:00 ص – 10:30 م. اتصل 0543103028 أو راسلنا على واتساب.",
   alternates: { canonical: "/contact/" },

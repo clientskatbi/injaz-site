@@ -56,7 +56,7 @@ export default async function CategoryHub({ params }: { params: Promise<Params> 
       <Breadcrumbs crumbs={crumbs} />
 
       <h1 className="max-w-4xl text-[clamp(1.9rem,4vw,2.6rem)] font-bold">
-        {cat.title} في العين
+        {`خدمات إنجاز ${cat.title} في العين`}
       </h1>
 
       <AnswerBox>{cat.answer}</AnswerBox>

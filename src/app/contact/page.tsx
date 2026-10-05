@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import { site, telLink } from "@/lib/site";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { AnswerBox } from "@/components/AnswerBox";
 import { CallButton, WhatsAppButton, GhostButton } from "@/components/Buttons";
 import { PhoneIcon, PinIcon, ClockIcon } from "@/components/Icons";
+import { FaqAccordion } from "@/components/FaqAccordion";
 
 export const metadata: Metadata = {
-  title: "تواصل مع مكتب إنجاز العين في المويجعي",
+  title: "مكتب إنجاز العين في المويجعي بالعين — العنوان والهاتف",
   description:
     "مكتب إنجاز العين — شارع خليفة بن زايد، مبنى بن حم، المويجعي، العين. يومياً 7:00 ص – 10:30 م. اتصل 0543103028 أو راسلنا على واتساب.",
   alternates: { canonical: "/contact/" },
@@ -19,10 +20,28 @@ const crumbs = [
   { name: "تواصل معنا", href: "/contact/" },
 ];
 
+const contactFaqs = [
+  {
+    q: "أين يقع مكتب إنجاز العين بالضبط؟",
+    a: "يقع المكتب في المويجعي، شارع خليفة بن زايد، مبنى بن حم، العين — أبوظبي. زر «خرائط جوجل» في هذه الصفحة يحمّل موقع المكتب مباشرة، والعنوان مدوّن في خرائط جوجل أيضاً.",
+  },
+  {
+    q: "هل يوجد مكتب إنجاز قريب مني في العين؟",
+    a: "مكتبنا الوحيد في العين هو هذا المكتب في المويجعي، وهو قريب من الجهات المعنية: دائرة القضاء ومكتب كاتب العدل ومرافق النيابة العامة في العين. إن كنت في منطقة أخرى فراسلنا على واتساب ونؤكد لك أقرب مسار ممكن.",
+  },
+  {
+    q: "كم تستغرق المعاملة عادةً؟",
+    a: "معظم الإقرارات والوكالات تُنجز في نفس اليوم متى اكتملت المستندات. أما المعاملات القضائية — فتح ملف الدعوى والاستئناف والتنفيذ — فترتبط مدتها بجدول الجهة المختصة ونوع الطلب، ونحدّد لك المدة المتوقّعة قبل أن تبدأ.",
+  },
+  {
+    q: "ما هي طرق الدفع المتاحة؟",
+    a: "الدفع بالبطاقة عبر صفحة Ziina الآمنة، أو تحويل بنكي إلى حساب المكتب، أو نقداً في المكتب. وأي معاملة لها مقابلها محدد ومستحق.",
+  },
+];
 export default function ContactPage() {
   return (
     <div className="shell py-10 lg:py-14">
-      <JsonLd data={breadcrumbSchema(crumbs)} />
+      <JsonLd data={[breadcrumbSchema(crumbs), faqSchema(contactFaqs)]} />
       <Breadcrumbs crumbs={crumbs} />
 
       <h1 className="text-[clamp(1.9rem,4vw,2.6rem)] font-bold">تواصل مع مكتب إنجاز العين</h1>
@@ -74,6 +93,10 @@ export default function ContactPage() {
           <p className="mt-8 rounded-[14px] border border-line bg-surface p-5 text-[0.9rem] leading-[1.85] text-ink-600">
             {site.disclaimer}
           </p>
+
+          <div className="mt-8">
+            <FaqAccordion faqs={contactFaqs} heading="أسئلة يبحث عنها أصحاب المكاتب في العين" />
+          </div>
         </div>
 
         <div className="overflow-hidden rounded-[14px] border border-line shadow-soft">

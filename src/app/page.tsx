@@ -12,8 +12,9 @@ import { CtaCard } from "@/components/CtaCard";
 import { ClockIcon, PinIcon, CheckIcon, ArrowIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
-  title: `${site.name}`,
-  description: site.description,
+  title: "مكتب إنجاز العين للخدمات القانونية | 0543103028",
+  description:
+    "مكتب إنجاز العين في المويجعي بالعين: عقود الزواج والمأذون، الوكالات وكاتب العدل، الإقرارات وحصر الإرث، طلبات النيابة والمحاكم. هاتف 0543103028.",
   alternates: { canonical: "/" },
 };
 

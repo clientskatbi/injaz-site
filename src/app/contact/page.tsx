@@ -9,9 +9,9 @@ import { PhoneIcon, PinIcon, ClockIcon } from "@/components/Icons";
 import { FaqAccordion } from "@/components/FaqAccordion";
 
 export const metadata: Metadata = {
-  title: "مكتب إنجاز العين في المويجعي بالعين — العنوان والهاتف",
+  title: "مكتب إنجاز العين في المويجعي | العنوان والهاتف",
   description:
-    "مكتب إنجاز العين — شارع خليفة بن زايد، مبنى بن حم، المويجعي، العين. يومياً 7:00 ص – 10:30 م. اتصل 0543103028 أو راسلنا على واتساب.",
+    "مكتب إنجاز في المويجعي، العين: شارع خليفة بن زايد، مبنى بن حم. يعمل يومياً 7:00 ص–10:30 م. اتصل 0543103028 أو راسلنا عبر واتساب.",
   alternates: { canonical: "/contact/" },
 };
 

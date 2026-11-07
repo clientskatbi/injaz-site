@@ -26,10 +26,18 @@ export function CategoryCard({ category, count }: { category: Category; count: n
   );
 }
 
-export function ServiceCard({ doc, categorySlug }: { doc: ServiceDoc; categorySlug: string }) {
+export function ServiceCard({
+  doc,
+  categorySlug,
+  href,
+}: {
+  doc: ServiceDoc;
+  categorySlug: string;
+  href?: string;
+}) {
   return (
     <Link
-      href={`/services/${categorySlug}/${doc.slug}/`}
+      href={href ?? `/services/${categorySlug}/${doc.slug}/`}
       className="group flex flex-col rounded-[14px] border border-line bg-white p-5 no-underline transition-all hover:-translate-y-0.5 hover:border-gold-500/45 hover:shadow-soft"
     >
       <h3 className="mb-2 text-[1.02rem] font-bold leading-snug text-navy-900 group-hover:text-navy-700">

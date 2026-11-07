@@ -5,6 +5,7 @@ import { z } from "zod";
 import type { CategorySlug } from "./categories";
 
 const CONTENT_DIR = path.join(process.cwd(), "content", "services");
+const ARTICLES_DIR = path.join(process.cwd(), "content", "articles");
 
 /**
  * مخطط البيانات الوصفية — يُتحقَّق منه أثناء البناء.
@@ -77,8 +78,8 @@ function countWords(s: string): number {
   return s.trim().split(/\s+/).filter(Boolean).length;
 }
 
-export function readServiceFile(slug: string): ServiceDoc {
-  const file = path.join(CONTENT_DIR, `${slug}.mdx`);
+function readDocFile(dir: string, slug: string, label: string): ServiceDoc {
+  const file = path.join(dir, `${slug}.mdx`);
   const raw = fs.readFileSync(file, "utf8");
   const { data, content } = matter(raw);
 
@@ -87,7 +88,7 @@ export function readServiceFile(slug: string): ServiceDoc {
     const issues = parsed.error.issues
       .map((i) => `  · ${i.path.join(".") || "(root)"}: ${i.message}`)
       .join("\n");
-    throw new Error(`Invalid frontmatter in content/services/${slug}.mdx:\n${issues}`);
+    throw new Error(`Invalid frontmatter in ${label}/${slug}.mdx:\n${issues}`);
   }
 
   const answerWords = countWords(parsed.data.answer);
@@ -105,6 +106,14 @@ export function readServiceFile(slug: string): ServiceDoc {
     toc: buildToc(content),
     readingMinutes: Math.max(1, Math.round(countWords(content) / 180)),
   };
+}
+
+export function readServiceFile(slug: string): ServiceDoc {
+  return readDocFile(CONTENT_DIR, slug, "content/services");
+}
+
+export function readArticleFile(slug: string): ServiceDoc {
+  return readDocFile(ARTICLES_DIR, slug, "content/articles");
 }
 
 let cache: ServiceDoc[] | null = null;
@@ -125,6 +134,23 @@ export const servicesByCategory = (category: CategorySlug): ServiceDoc[] =>
 
 export const serviceBySlug = (slug: string): ServiceDoc | undefined =>
   allServices().find((s) => s.slug === slug);
+
+let articleCache: ServiceDoc[] | null = null;
+
+/** المقالات المعلوماتية (content/articles) — داعمة لصفحات الخدمات، لا تستبدلها. */
+export function allArticles(): ServiceDoc[] {
+  if (articleCache) return articleCache;
+  if (!fs.existsSync(ARTICLES_DIR)) return (articleCache = []);
+  articleCache = fs
+    .readdirSync(ARTICLES_DIR)
+    .filter((f) => f.endsWith(".mdx"))
+    .map((f) => readArticleFile(f.replace(/\.mdx$/, "")))
+    .sort((a, b) => a.data.order - b.data.order || a.slug.localeCompare(b.slug));
+  return articleCache;
+}
+
+export const articleBySlug = (slug: string): ServiceDoc | undefined =>
+  allArticles().find((s) => s.slug === slug);
 
 /** الخدمات ذات الصلة: المحدَّدة يدوياً أولاً، ثم من الفئة نفسها */
 export function relatedServices(doc: ServiceDoc, limit = 3): ServiceDoc[] {

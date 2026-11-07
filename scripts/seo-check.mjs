@@ -8,6 +8,7 @@ import path from "node:path";
 import matter from "gray-matter";
 
 const DIR = path.join(process.cwd(), "content", "services");
+const ARTICLES_DIR = path.join(process.cwd(), "content", "articles");
 const ROSTER = JSON.parse(
   fs.readFileSync(path.join(process.cwd(), "content", "roster.json"), "utf8")
 ).services;
@@ -24,17 +25,24 @@ if (!fs.existsSync(DIR)) {
   process.exit(0);
 }
 
-const files = fs.readdirSync(DIR).filter((f) => f.endsWith(".mdx"));
+const files = [
+  ...fs.readdirSync(DIR).filter((f) => f.endsWith(".mdx")).map((f) => ({ dir: DIR, file: f, article: false })),
+  ...(fs.existsSync(ARTICLES_DIR)
+    ? fs.readdirSync(ARTICLES_DIR).filter((f) => f.endsWith(".mdx")).map((f) => ({ dir: ARTICLES_DIR, file: f, article: true }))
+    : []),
+];
 if (files.length === 0) {
   console.log("• لا توجد مقالات بعد — تم تخطّي الفحص.");
   process.exit(0);
 }
 
-const slugs = new Set(files.map((f) => f.replace(/\.mdx$/, "")));
+const serviceSlugs = new Set(
+  fs.readdirSync(DIR).filter((f) => f.endsWith(".mdx")).map((f) => f.replace(/\.mdx$/, ""))
+);
 
-for (const file of files) {
+for (const { dir, file, article } of files) {
   const slug = file.replace(/\.mdx$/, "");
-  const raw = fs.readFileSync(path.join(DIR, file), "utf8");
+  const raw = fs.readFileSync(path.join(dir, file), "utf8");
   const { data: fm, content } = matter(raw);
   const E = (m) => errors.push(`${file}: ${m}`);
   const W = (m) => warnings.push(`${file}: ${m}`);
@@ -91,16 +99,19 @@ for (const file of files) {
     E("secondaryKeywords يحتاج عنصرين على الأقل");
   if (!/^\d{4}-\d{2}-\d{2}$/.test(fm.updated ?? "")) E("updated بصيغة غير صحيحة (YYYY-MM-DD)");
 
-  // ── مطابقة السجلّ
-  const entry = ROSTER[slug];
-  if (!entry) E("غير مُدرَج في content/roster.json");
-  else if (entry.category !== fm.category)
-    E(`الفئة "${fm.category}" تخالف السجلّ ("${entry.category}")`);
+  // ── مطابقة السجلّ (الخدمات فقط — المقالات ليست في السجلّ)
+  if (!article) {
+    const entry = ROSTER[slug];
+    if (!entry) E("غير مُدرَج في content/roster.json");
+    else if (entry.category !== fm.category)
+      E(`الفئة "${fm.category}" تخالف السجلّ ("${entry.category}")`);
+  }
 
   // ── الروابط الداخلية
-  // رابط لصفحة مُدرجة في السجلّ ولم تُكتب بعد = تحذير؛ لغير المُدرجة = خطأ.
+  // الخدمات: رابط لصفحة مُدرجة ولم تُكتب = تحذير؛ لغير المُدرجة = خطأ.
+  // المقالات: related وروابط متنها تشير إلى صفحات خدمات موجودة.
   for (const rel of fm.related ?? []) {
-    if (slugs.has(rel)) continue;
+    if (serviceSlugs.has(rel)) continue;
     if (ROSTER[rel]) W(`related يشير إلى "${rel}" — مُدرج في السجلّ ولم يُكتب بعد`);
     else E(`related يشير إلى "${rel}" وهو غير موجود في السجلّ`);
   }
@@ -113,7 +124,7 @@ for (const file of files) {
     if (!ROSTER[target]) E(`رابط داخلي مكسور: ${href}`);
     else if (ROSTER[target].category !== cat)
       E(`رابط بفئة خاطئة: ${href} — الفئة الصحيحة "${ROSTER[target].category}"`);
-    else if (!slugs.has(target)) W(`رابط إلى "${target}" — مُدرج ولم يُكتب بعد`);
+    else if (!serviceSlugs.has(target)) W(`رابط إلى "${target}" — مُدرج ولم يُكتب بعد`);
   }
   if (internal.length === 0) W("لا توجد روابط داخلية في المتن");
 

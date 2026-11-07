@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { categories } from "@/lib/categories";
-import { allServices } from "@/lib/content";
+import { allArticles, allServices } from "@/lib/content";
 import { breadcrumbSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -23,6 +23,7 @@ const crumbs = [
 
 export default function ArticlesIndex() {
   const docs = allServices();
+  const articles = allArticles();
 
   return (
     <div className="shell py-10 lg:py-14">
@@ -48,6 +49,13 @@ export default function ArticlesIndex() {
       </div>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {articles.map((d) => (
+          <ServiceCard key={d.slug} doc={d} categorySlug={d.category} href={`/articles/${d.slug}/`} />
+        ))}
+      </div>
+
+      <h2 className="mt-14 mb-5 text-[1.5rem] font-bold">أدلّة الخدمات التفصيلية</h2>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {docs.map((d) => (
           <ServiceCard key={d.slug} doc={d} categorySlug={d.category} />
         ))}

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 import { categories } from "@/lib/categories";
-import { allServices } from "@/lib/content";
+import { allArticles, allServices } from "@/lib/content";
 
 export const dynamic = "force-static";
 
@@ -31,5 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...statics, ...hubs, ...pages];
+  const articles: MetadataRoute.Sitemap = allArticles().map((a) => ({
+    url: abs(`/articles/${a.slug}/`),
+    lastModified: new Date(a.data.updated),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...statics, ...hubs, ...pages, ...articles];
 }

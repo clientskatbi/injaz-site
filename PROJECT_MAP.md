@@ -1,6 +1,6 @@
 # PROJECT_MAP — Enjaz Al Ain SEO Website
 
-> Continuity handoff for the live Enjaz Al Ain SEO site. Last verified: 2026-10-25.
+> Continuity handoff for the live Enjaz Al Ain SEO site. Last verified: 2026-11-07.
 
 ## Project
 - Client: مكتب إنجاز العين.
@@ -44,13 +44,14 @@
 - Reply drafts require Bilal's approval before posting.
 
 ## In progress
-- Kanban task `t_8bc6c5a7` (assigned to Nibras): local metadata-only patch reviewed and verified; only the two specified source files changed. No commit, push, deployment, portal write, or GBP edit. The new metadata is not live; October subscription is unpaid. Bilal approved publishing the exact copy after payment.
+- Kanban task `t_8bc6c5a7` (assigned to Nibras): DONE 2026-11-07 — metadata committed in `fb847cc` (2026-10-31) and deployed to production by Jarvis on Bilal's explicit order. `npm run build` passed (35 pages, 0 errors, 0 warnings); Vercel prod deployment `dpl_31xVazCSNdCUSC2mrJrjQ9Qe2oZm`. Live verified via curl: residence title «إقرار سكن في العين: الشروط والمستندات | مكتب إنجاز», contact title «مكتب إنجاز العين في المويجعي | العنوان والهاتف». Working-tree CRLF noise discarded via `git checkout -- .`.
 - Weekly report cron `119304331333` is scheduled for Monday 2026-10-26 09:00 Asia/Dubai at Bilal's request. It posts the final-data comparison to the client portal and verifies the readback. The report must distinguish measured results from changes not yet deployed; do not claim an immediate CTR uplift.
 
 ## [ORPHANS & PENDING]
-- October SEO subscription is unpaid; after payment, publish the exact metadata already approved by Bilal and verify the live HTML.
+- ~~October SEO subscription is unpaid; after payment, publish the exact metadata already approved by Bilal and verify the live HTML.~~ DONE 2026-11-07: published and live-verified (see above). Payment status of October invoice still an open admin item unless already settled.
 - On 2026-10-26, publish the scheduled weekly GSC update to the client portal and verify the content revision.
 - Get Bilal's approval for the three drafted Google Business replies before posting; keep the listing URL unchanged.
 
 ## [CHANGELOG]
+- 2026-11-07 — Deployed `fb847cc` to production on Bilal's explicit instruction. Build clean (35 pages, 0 errors, 0 warnings). Live titles verified via direct fetch for residence + contact pages. Discarded CRLF-only working-tree changes (71 files, `git diff -w` empty).
 - 2026-10-25 — Added this website handoff and linked it from `~/Projects/PROJECT_INDEX.md`; recorded final GSC baseline, page/query/device/country/day breakdown, and Google Business review snapshot. Nibras changed metadata in two source files only; Jarvis reviewed and independently ran `npm run build` (35 exported pages; 0 errors; 1 existing SEO warning in `bail-request.mdx`; RTL and HTML checks passed). Verified generated titles, descriptions, canonical URLs, and character counts. Bilal confirmed October subscription is unpaid and approved the exact copy for post-payment deployment. Expanded cron `119304331333` to an evidence-based, positive-focused client update with detailed page/query/device/country/day analysis, measurable next steps, and a two-page Arabic RTL PDF for Bilal; it remains scheduled for 2026-10-26 09:00 Asia/Dubai and is set to post the summary in the client portal and send Bilal the PDF in Telegram topic `123248`.

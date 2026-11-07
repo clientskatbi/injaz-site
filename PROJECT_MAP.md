@@ -1,6 +1,6 @@
 # PROJECT_MAP — Enjaz Al Ain SEO Website
 
-> Continuity handoff for the live Enjaz Al Ain SEO site. Last verified: 2026-11-07.
+> Continuity handoff for the live Enjaz Al Ain SEO site. Last verified: 2026-11-07 (articles deployed).
 
 ## Project
 - Client: مكتب إنجاز العين.
@@ -53,5 +53,6 @@
 - Get Bilal's approval for the three drafted Google Business replies before posting; keep the listing URL unchanged.
 
 ## [CHANGELOG]
+- 2026-11-07 — Deployed 3 GSC-driven articles (commit `091efdd`) to production on Bilal's explicit order: `/articles/residence-declaration-abu-dhabi/`, `/articles/cancel-power-of-attorney-guide/`, `/articles/kafala-emirates-guide/`. Added `/articles/[slug]/` route, articles index section, sitemap entries, and extended `seo-check` to lint `content/articles/`. Build: 38 pages, 0 errors, 0 verify warnings (1 pre-existing seo-check warning in `bail-request.mdx`). Live verified via curl (HTTP 200 + exact titles + sitemap URLs).
 - 2026-11-07 — Deployed `fb847cc` to production on Bilal's explicit instruction. Build clean (35 pages, 0 errors, 0 warnings). Live titles verified via direct fetch for residence + contact pages. Discarded CRLF-only working-tree changes (71 files, `git diff -w` empty).
 - 2026-10-25 — Added this website handoff and linked it from `~/Projects/PROJECT_INDEX.md`; recorded final GSC baseline, page/query/device/country/day breakdown, and Google Business review snapshot. Nibras changed metadata in two source files only; Jarvis reviewed and independently ran `npm run build` (35 exported pages; 0 errors; 1 existing SEO warning in `bail-request.mdx`; RTL and HTML checks passed). Verified generated titles, descriptions, canonical URLs, and character counts. Bilal confirmed October subscription is unpaid and approved the exact copy for post-payment deployment. Expanded cron `119304331333` to an evidence-based, positive-focused client update with detailed page/query/device/country/day analysis, measurable next steps, and a two-page Arabic RTL PDF for Bilal; it remains scheduled for 2026-10-26 09:00 Asia/Dubai and is set to post the summary in the client portal and send Bilal the PDF in Telegram topic `123248`.

@@ -53,6 +53,12 @@
 - Get Bilal's approval for the three drafted Google Business replies before posting; keep the listing URL unchanged.
 
 ## [CHANGELOG]
+- 2026-11-17 — Deployed `8425a13` to production on Bilal's explicit order (dpl_Ed2dvUnXBfthWBPNF76a1tur7Jxj).
+  Intent split for the POA topic, driven by GSC: the service page (avg pos 30.9) and the UAE guide article
+  (16.6) were competing for «الغاء وكالة». Service page now carries that exact form as a secondary keyword and
+  links to the guide from the intro; the article dropped the competing «الغاء وكالة في الإمارات» keyword and
+  links to the Ain service page in its first section. Fixed the «الأأمن» typo (x2). Build: 42 pages, 0 errors,
+  1 pre-existing warning. Live verified: both URLs 200, cross-links present (1 and 4), typo gone.
 - 2026-11-17 — GSC OAuth refresh token had been revoked; Bilal re-authorized (katbi89@gmail.com,
   webmasters.readonly) and the token was rewritten to `~/.config/google-gsc/token.json`. First pull since
   2026-11-06: 2026-10-19→11-15 = 3,097 impressions / 50 clicks / CTR 1.61% / pos 7.78 (prior 28d 2,501/47/1.88%/7.66);

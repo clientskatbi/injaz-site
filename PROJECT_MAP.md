@@ -53,6 +53,16 @@
 - Get Bilal's approval for the three drafted Google Business replies before posting; keep the listing URL unchanged.
 
 ## [CHANGELOG]
+- 2026-11-17 — GSC OAuth refresh token had been revoked; Bilal re-authorized (katbi89@gmail.com,
+  webmasters.readonly) and the token was rewritten to `~/.config/google-gsc/token.json`. First pull since
+  2026-11-06: 2026-10-19→11-15 = 3,097 impressions / 50 clicks / CTR 1.61% / pos 7.78 (prior 28d 2,501/47/1.88%/7.66);
+  last week 11-09→11-15 = 1,065 impressions / 22 clicks / CTR 2.07% (best week recorded). Articles: 434 impressions,
+  6 clicks. Full breakdown in `~/Projects/clients/injaz-site-reports/2026-11-17-gsc-pull.md`.
+- 2026-11-17 — Client portal content updated via the shared store (`POST /api/content`, op `set`), rev
+  `2bab6bdac069` → `6053f3ad1e1b`, verified by readback and `GET api/login?client=enjaz`. Changed: KPI cards,
+  the 28-day panel, a new "تحديث نوفمبر" updates block, the data-window note, and month-4 timeline items.
+  NOTE for future audits: the portal was NOT stale by six weeks — `CLIENTS[]` in `api/login.js` is only the
+  fallback and lags the store. Always audit `GET /api/content?client=enjaz`, not the fallback.
 - 2026-11-07 — Deployed 4 priority-2 articles (commit `da95b4a`) to production on Bilal's explicit order: `/articles/family-guidance-alain-guide/`, `/articles/judgment-execution-alain-guide/`, `/articles/divorce-proof-guide/`, `/articles/marriage-fund-grant-guide/`. Total articles now 7. Build: 42 pages, 0 errors, 0 verify warnings; seo-check back to 1 pre-existing warning (`bail-request`). Live verified via curl (HTTP 200 + exact titles).
 - 2026-11-07 — Deployed 3 GSC-driven articles (commit `091efdd`) to production on Bilal's explicit order: `/articles/residence-declaration-abu-dhabi/`, `/articles/cancel-power-of-attorney-guide/`, `/articles/kafala-emirates-guide/`. Added `/articles/[slug]/` route, articles index section, sitemap entries, and extended `seo-check` to lint `content/articles/`. Build: 38 pages, 0 errors, 0 verify warnings (1 pre-existing seo-check warning in `bail-request.mdx`). Live verified via curl (HTTP 200 + exact titles + sitemap URLs).
 - 2026-11-07 — Deployed `fb847cc` to production on Bilal's explicit instruction. Build clean (35 pages, 0 errors, 0 warnings). Live titles verified via direct fetch for residence + contact pages. Discarded CRLF-only working-tree changes (71 files, `git diff -w` empty).
